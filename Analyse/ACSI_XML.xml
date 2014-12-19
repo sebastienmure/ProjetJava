@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<work>
+	<about>
+		<version num="0.3.9.4"/>
+		<author>
+			<name>MESSOUCI</name>
+			<email>jmerise@jfreesoft.com</email>
+		</author>
+	</about>
+<MCD>
+	<entitiesList>
+		<entite name="Utilisateur" x="87" y="126">
+			<attribut name ="ut_id" type="Auto_increment" size1="25" size2="0" key="PRIMARY KEY" isnull="true" comment=""/>
+			<attribut name ="ut_nom" type="Varchar" size1="250" size2="0" key=" " isnull="true" comment=""/>
+			<attribut name ="ut_prenom" type="Varchar" size1="250" size2="0" key=" " isnull="true" comment=""/>
+			<attribut name ="ut_cp" type="Varchar" size1="250" size2="0" key=" " isnull="true" comment=""/>
+			<attribut name ="ut_pass" type="Varchar" size1="250" size2="0" key=" " isnull="true" comment=""/>
+			<attribut name ="ut_hash" type="Varchar" size1="250" size2="0" key=" " isnull="true" comment=""/>
+			<attribut name ="ut_isAdmin" type="Bool" size1="25" size2="0" key=" " isnull="true" comment=""/>
+
+		</entite>
+
+		<entite name="Article" x="603" y="140">
+			<attribut name ="ar_id" type="Auto_increment" size1="25" size2="0" key="PRIMARY KEY" isnull="true" comment=""/>
+			<attribut name ="ar_ref" type="Varchar" size1="250" size2="0" key=" " isnull="true" comment=""/>
+			<attribut name ="ar_label" type="Varchar" size1="250" size2="0" key=" " isnull="true" comment=""/>
+			<attribut name ="ar_prix" type="Float" size1="25" size2="0" key=" " isnull="true" comment=""/>
+			<attribut name ="ar_image" type="Text" size1="0" size2="0" key=" " isnull="true" comment=""/>
+
+		</entite>
+
+		<relation name="consulter" x="396" y="175">
+
+		</relation>
+
+		<entite name="Date" x="411" y="59">
+			<attribut name ="da_date" type="Date" size1="25" size2="0" key="PRIMARY KEY" isnull="true" comment=""/>
+
+		</entite>
+
+	</entitiesList>
+	<LinkList>
+		<link name=" " card="0,n" elem1="Utilisateur" elem2="consulter" casse="false" x="335.0" y="202.0" />
+		<link name=" " card="0,n" elem1="Article" elem2="consulter" casse="false" x="465.0" y="210.0" />
+		<link name="" card="0,n" elem1="Date" elem2="consulter" casse="false" x="447.0" y="134.0" />
+	</LinkList>
+	<heritageList>
+	</heritageList>
+</MCD>
+</work>

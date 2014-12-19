@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_8BMqAIeHEeSu1of8_nVRVA" name="NewModel">
+  <packageImport xmi:id="_Wis9UIeJEeSu1of8_nVRVA">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:id="_cf_bIIeJEeSu1of8_nVRVA">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_QqykMIeIEeSu1of8_nVRVA" name="Utilisateur">
+    <ownedAttribute xmi:id="_e9SZcIeIEeSu1of8_nVRVA" name="id" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/XMLPrimitiveTypes.library.uml#UnsignedInt"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_ikVYoIeIEeSu1of8_nVRVA" name="nom" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_kkw_UIeIEeSu1of8_nVRVA" name="prenom" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_mMi1cIeIEeSu1of8_nVRVA" name="cp" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_p9APUIeIEeSu1of8_nVRVA" name="pass" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_rvrt4IeIEeSu1of8_nVRVA" name="hash" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_tG_fEIeIEeSu1of8_nVRVA" name="isAdmin" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EShort"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_zxC8QIeIEeSu1of8_nVRVA" name="Article">
+    <ownedAttribute xmi:id="_1Mip4IeIEeSu1of8_nVRVA" name="id" visibility="private"/>
+    <ownedAttribute xmi:id="_2Qn9EIeIEeSu1of8_nVRVA" name="ref" visibility="private"/>
+    <ownedAttribute xmi:id="_3NNhIIeIEeSu1of8_nVRVA" name="label" visibility="private"/>
+    <ownedAttribute xmi:id="_4RLfkIeIEeSu1of8_nVRVA" name="prix" visibility="private"/>
+    <ownedAttribute xmi:id="_6H0REIeIEeSu1of8_nVRVA" name="image" visibility="private"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_AKwq8IeJEeSu1of8_nVRVA" name="consulte" memberEnd="_AKxSAIeJEeSu1of8_nVRVA _ALJFcYeJEeSu1of8_nVRVA" navigableOwnedEnd="_AKxSAIeJEeSu1of8_nVRVA _ALJFcYeJEeSu1of8_nVRVA">
+    <ownedEnd xmi:id="_AKxSAIeJEeSu1of8_nVRVA" name="utilisateurs" type="_QqykMIeIEeSu1of8_nVRVA" association="_AKwq8IeJEeSu1of8_nVRVA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ALHQQIeJEeSu1of8_nVRVA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ALJFcIeJEeSu1of8_nVRVA" value="*"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_ALJFcYeJEeSu1of8_nVRVA" name="articles" type="_zxC8QIeIEeSu1of8_nVRVA" association="_AKwq8IeJEeSu1of8_nVRVA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ALJsgIeJEeSu1of8_nVRVA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ALJsgYeJEeSu1of8_nVRVA" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Model>
