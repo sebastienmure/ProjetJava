@@ -26,20 +26,18 @@ public class Fenetre extends JFrame
             {"FunMan", "32 ans", "1.85 m"}
         };
         
-        //Les titres des colonnes
+        // Les titres des colonnes
         String    title[] = {"Pseudo", "Age", "Taille"};
         JTable tableau = new JTable(data, title);
         
-        //Nous ajoutons notre tableau à notre contentPane dans un scroll
-        //Sinon les titres des colonnes ne s'afficheront pas !
+        // Nous ajoutons notre tableau à notre contentPane dans un scroll
+        // Sinon les titres des colonnes ne s'afficheront pas !
         this.getContentPane().add(new JScrollPane(tableau));
     }
 
     public static void main(String[] args)
     {
-	/*
         Fenetre fen = new Fenetre();
         fen.setVisible(true);
-        */
     }     
 }
