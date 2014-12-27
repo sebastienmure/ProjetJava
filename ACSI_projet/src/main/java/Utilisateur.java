@@ -23,7 +23,7 @@ public class Utilisateur
 	/**
 	 * Description of the property isAdmin.
 	 */
-	private Boolean isAdmin;
+	private boolean isAdmin;
 
 	/**
 	 * Description of the property pass.
@@ -96,7 +96,7 @@ public class Utilisateur
 	/**
 	 * @return the isAdmin
 	 */
-	public Boolean getIsAdmin()
+	public boolean getIsAdmin()
 	{
 	    return isAdmin;
 	}
@@ -104,7 +104,7 @@ public class Utilisateur
 	/**
 	 * @param isAdmin the isAdmin to set
 	 */
-	public void setIsAdmin(Boolean isAdmin)
+	public void setIsAdmin(boolean isAdmin)
 	{
 	    this.isAdmin = isAdmin;
 	}

@@ -4,15 +4,17 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashSet;
 import java.util.Vector;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
  
-public class OracleJDBC
+public abstract class OracleJDBC
 {
 	// JDBC driver name and database URL
 	static final String JDBC_DRIVER = "oracle.jdbc.driver.OracleDriver";
@@ -73,6 +75,46 @@ public class OracleJDBC
 		
 	}
 	
+	@SuppressWarnings("finally")
+	public static ResultSet query(String sqlQuery)
+	{
+		ResultSet returnValue = null;
+		//DefaultTableModel dtm = null;
+		
+		if(sqlQuery.length() == 0)
+			return null;
+		
+		if( !jdbcRegister() )
+			return null;
+		
+		if( !connect() )
+			return null;
+		
+		try
+		{
+			//STEP 4: Execute a query
+			System.out.println("Creating statement...");
+			stmt = connection.createStatement();
+			
+			System.out.print("Querying...");
+			rs = stmt.executeQuery(sqlQuery);
+			// dtm = buildTableModel(rs);
+			returnValue = rs;
+		}
+		catch(SQLException se)
+		{
+			System.out.print("SQLException...");
+		    se.printStackTrace();	
+		    returnValue = null;
+		}
+		finally
+		{
+			//STEP 6: Clean-up environment
+			//disconnect();
+			return returnValue;
+		}
+	}
+	
 	public static void disconnect()
 	{
 		try
@@ -124,33 +166,62 @@ public class OracleJDBC
 		System.out.println("Disconnected!");
 	}
 	
+	private static DefaultTableModel buildTableModel(ResultSet rs)
+	        throws SQLException
+	{
+	    ResultSetMetaData metaData = rs.getMetaData();
+
+	    // names of columns
+	    Vector<String> columnNames = new Vector<String>();
+	    int columnCount = metaData.getColumnCount();
+	    for (int column = 1; column <= columnCount; column++)
+	    {
+	        columnNames.add(metaData.getColumnName(column));
+	    }
+
+	    // data of the table
+	    Vector<Vector<Object>> data = new Vector<Vector<Object>>();
+	    while (rs.next())
+	    {
+	        Vector<Object> vector = new Vector<Object>();
+	        for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++)
+	        {
+	            vector.add(rs.getObject(columnIndex));
+	        }
+	        data.add(vector);
+    	}
+
+	    return new DefaultTableModel(data, columnNames);
+	}
+	
 	public static void main(String[] argv)
 	{
-		String sqlQuery = "";
+		//String sqlQuery = "";
 		String label = "";
 		int id	= 0;
 		float prix = 0;
 		DefaultTableModel dtm = null;
 		
-		
-		if( !jdbcRegister() )
-			return;
-		
-		if( !connect() )
-			return;
-				
-		sqlQuery = "SELECT * FROM Article";
 		try
 		{
 			//STEP 4: Execute a query
-			System.out.println("Creating statement...");
-			stmt = connection.createStatement();
+			//System.out.println("Creating statement...");
+			//stmt = connection.createStatement();
 			
-			System.out.print("Querying articles...");
-			rs = stmt.executeQuery(sqlQuery);
-			dtm = buildTableModel(rs);
-			System.out.println(" OK");
+			//HashSet<Article> hsa = ArticleHelper.getAll();
+			//Article a = ArticleHelper.getFirst();
+			Article a = ArticleHelper.getOneById(1);
+			a.setLabel("LabelOK");
+			ArticleHelper.commitChange(a);
+			System.out.println( a.toString() );
+			//System.out.println(" OK");
 	
+			
+
+			rs = query("SELECT * FROM Article");
+			//System.out.print("Querying articles...");
+			//rs = stmt.executeQuery(sqlQuery);
+			dtm = buildTableModel(rs);
 			
 			System.out.print("ID");
 			System.out.print("\tLabel");
@@ -178,7 +249,6 @@ public class OracleJDBC
 		    JTable table = new JTable(dtm);
 		    JOptionPane.showMessageDialog(null, new JScrollPane(table));
 		    /* ****** */
-			
 		}
 		catch(SQLException se)
 		{
@@ -188,35 +258,22 @@ public class OracleJDBC
 		finally
 		{
 			//STEP 6: Clean-up environment
-			disconnect();
+			if(rs != null)
+			{
+				try
+				{
+					rs.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+					rs = null;
+				}
+				finally
+				{
+					disconnect();
+				}
+			}
 		}
-	}
-
-	private static DefaultTableModel buildTableModel(ResultSet rs)
-	        throws SQLException
-	{
-	    ResultSetMetaData metaData = rs.getMetaData();
-
-	    // names of columns
-	    Vector<String> columnNames = new Vector<String>();
-	    int columnCount = metaData.getColumnCount();
-	    for (int column = 1; column <= columnCount; column++)
-	    {
-	        columnNames.add(metaData.getColumnName(column));
-	    }
-
-	    // data of the table
-	    Vector<Vector<Object>> data = new Vector<Vector<Object>>();
-	    while (rs.next())
-	    {
-	        Vector<Object> vector = new Vector<Object>();
-	        for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++)
-	        {
-	            vector.add(rs.getObject(columnIndex));
-	        }
-	        data.add(vector);
-    	}
-
-	    return new DefaultTableModel(data, columnNames);
 	}
 }

@@ -36,6 +36,8 @@ public class Article
 	 */
 	private String ref;
 	
+	private boolean isInBase;
+	
 	/**
 	 * Description of the property id.
 	 */
@@ -64,6 +66,21 @@ public class Article
 		ref = "";
 		label = "";
 		image = "";
+		isInBase = false;
+	}
+	
+	public Article(int id, float prix, String ref, String label, String image, boolean isInBase)
+	{
+		// Start of user code constructor for Article)
+		super();
+		// End of user code
+		
+		this.prix = prix;
+		this.id = id;
+		this.ref = ref;
+		this.label = label;
+		this.image = image;
+		this.isInBase = isInBase;
 	}
 
 	/**
@@ -160,6 +177,31 @@ public class Article
 	public void setUtilisateurs(HashSet<Utilisateur> utilisateurs)
 	{
 	    this.utilisateurs = utilisateurs;
+	}
+	
+	public void addUtilisateurs(Utilisateur utilisateur)
+	{
+		if(utilisateur == null)
+			return;
+					
+	    this.utilisateurs.add(utilisateur);
+	}
+	
+	
+	@Override
+	public String toString()
+	{
+		return "Article [prix=" + prix + ", label=" + label + ", image="
+				+ image + ", ref=" + ref + ", id=" + id + ", utilisateurs="
+				+ utilisateurs + "]";
+	}
+
+	public boolean isInBase() {
+		return isInBase;
+	}
+
+	public void setInBase(boolean isInBase) {
+		this.isInBase = isInBase;
 	}
 	
 	// Start of user code (user defined methods for Article)
