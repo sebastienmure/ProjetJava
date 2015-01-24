@@ -1,4 +1,3 @@
-/Model
-/Helpers
-/View
-/Controller
+/controller
+/model
+/view

@@ -1,7 +1,8 @@
-package View;
+package view;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 import java.awt.BorderLayout;
 
@@ -20,16 +21,16 @@ import java.awt.Insets;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
+import model.Article;
+import model.ArticleHelper;
+import controller.SupaLogga;
+
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-import Controller.SupaLogga;
-import Model.Article;
-import Model.ArticleHelper;
-
-public class NewArticleWindow extends JDialog implements ActionListener
+public class ArticleFormView extends JDialog implements ActionListener
 {
 	/**
 	 * 
@@ -37,10 +38,10 @@ public class NewArticleWindow extends JDialog implements ActionListener
 	private static final long serialVersionUID = -2925017973870016209L;
 	private JTextField tfLibelle;
 	private JTextField tfReference;
-		private JTextField tfPrix;
-		private JTextField tfImg;
+	private JTextField tfPrix;
+	private JTextField tfImg;
 
-	public NewArticleWindow()
+	public ArticleFormView()
 	{
 		super();
 		BorderLayout borderLayout = (BorderLayout) getContentPane().getLayout();
@@ -164,7 +165,8 @@ public class NewArticleWindow extends JDialog implements ActionListener
 		// verif que tout est rempli
 		if(libelle.length() == 0 || ref.length() == 0)
 		{
-			SupaLogga.log("Il faut renseigner un libellé et une référence");
+			JOptionPane.showMessageDialog(this, "Il faut renseigner un libellé et une référence.");
+			//SupaLogga.log("Il faut renseigner un libellé et une référence");
 			return;
 		}
 		
@@ -180,13 +182,20 @@ public class NewArticleWindow extends JDialog implements ActionListener
 		}
 		
 		id = ArticleHelper.getLastId() + 1;
+		if(id == -1)
+		{
+			JOptionPane.showMessageDialog(this, "Erreur avec l'ID...");
+			return;
+		}
+		
 		Article a = new Article(id, prix, ref, libelle, image, false);
+		ArticleHelper.commitChange(a);
 		SupaLogga.log(a.toString());
 	}
 
 	public static void main(String[] args)
 	{
 		// TODO Auto-generated method stub
-		NewArticleWindow n = new NewArticleWindow();
+		ArticleFormView n = new ArticleFormView();
 	}
 }

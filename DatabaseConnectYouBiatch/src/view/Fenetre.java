@@ -1,4 +1,4 @@
-package View;
+package view;
 
 
 import java.sql.ResultSet;
@@ -9,7 +9,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import Controller.OracleJDBC;
+import controller.OracleJDBC;
 
  
 // CTRL + SHIFT + O pour generer les imports
@@ -76,18 +76,6 @@ public class Fenetre extends JFrame
     	}
     	finally
     	{
-    		/*
-    		try 
-    		{
-				rs.close();
-			}
-    		catch (SQLException e)
-    		{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			*/
-    		
     		OracleJDBC.disconnect();
     	}
     	

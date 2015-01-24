@@ -1,4 +1,4 @@
-package Model;
+package model;
 import java.util.HashSet;
 
 /*******************************************************************************
@@ -60,10 +60,6 @@ public class Utilisateur
 	 * Description of the property prenom.
 	 */
 	private String prenom;
-
-	// Start of user code (user defined attributes for Utilisateur)
-
-	// End of user code
 
 	/**
 	 * The constructor.

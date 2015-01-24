@@ -1,4 +1,4 @@
-package Controller;
+package controller;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -15,8 +15,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-import Model.Article;
-import Model.ArticleHelper;
+import model.Article;
+import model.ArticleHelper;
  
 public abstract class OracleJDBC
 {
@@ -25,8 +25,8 @@ public abstract class OracleJDBC
 	static final String DB_URL = "jdbc:oracle:thin:@192.168.83.128:1521:JoseSID"; 
 	
 	//	Database credentials
-	static final String USER = "SYSTEM";  // username
-	static final String PASS = "system123lol"; // password
+	static final String USER = "SYS as SYSDBA";  // username
+	static final String PASS = "sys123lol"; // password
 	
 	static Connection connection = null;
 	static Statement stmt = null;

@@ -1,10 +1,10 @@
-package Model;
+package model;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
 
-import Controller.OracleJDBC;
-import Controller.SupaLogga;
+import controller.OracleJDBC;
+import controller.SupaLogga;
 
 public abstract class ArticleHelper
 {
@@ -143,20 +143,35 @@ public abstract class ArticleHelper
 	
 	public static void commitChange(Article a)
 	{
+		String msg = "";
 		if(a == null)
 			return;
 		
 		ResultSet res = null;
 		if(a.isInBase())
+		{
 			res = OracleJDBC.query(" UPDATE Article "
 					+ " SET AR_REF = '" + a.getRef()
 					+ "', AR_LABEL = '" + a.getLabel()
 					+ "', AR_PRIX = " + a.getPrix()
 					+ ", AR_IMAGE = '" + a.getImage()
 					+ "' WHERE AR_ID = " + a.getId() );
+			msg = "Updated !";
+		}
+		else
+		{
+			res = OracleJDBC.query("INSERT INTO Article values ("
+					+ a.getId() 
+					+ ", '" + a.getRef()
+					+ "', '" + a.getLabel()
+					+ "', " + a.getPrix()
+					+ ", '" + a.getImage() + "')");
+			msg = "Created !";
+		}
 		
 		if(res != null)
 		{
+			System.out.println(msg);
 			try
 			{
 				res.close();
