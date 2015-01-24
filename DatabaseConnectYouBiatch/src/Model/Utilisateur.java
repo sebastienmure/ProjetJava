@@ -1,3 +1,4 @@
+package Model;
 import java.util.HashSet;
 
 /*******************************************************************************
@@ -23,7 +24,7 @@ public class Utilisateur
 	/**
 	 * Description of the property isAdmin.
 	 */
-	private Boolean isAdmin;
+	private boolean isAdmin;
 
 	/**
 	 * Description of the property pass.
@@ -45,6 +46,11 @@ public class Utilisateur
 	 */
 	private String cp;
 
+	/**
+	 * @brief Not a Column of the Utilisateur table
+	 */
+	private boolean isInBase;
+	
 	/**
 	 * Description of the property articles.
 	 */
@@ -77,6 +83,23 @@ public class Utilisateur
 		isAdmin = false;
 	}
 
+	public Utilisateur(int id, String nom, String prenom, String cp, String pass, String hash, boolean isAdmin, boolean isInBase)
+	{
+		// Start of user code constructor for Utilisateur)
+		super();
+		// End of user code
+		
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.cp = cp;
+		this.pass = pass;
+		this.hash = hash;
+		this.isAdmin = false;
+		this.isInBase = isInBase;
+	}
+
+
 	/**
 	 * @return the id
 	 */
@@ -96,7 +119,7 @@ public class Utilisateur
 	/**
 	 * @return the isAdmin
 	 */
-	public Boolean getIsAdmin()
+	public boolean getIsAdmin()
 	{
 	    return isAdmin;
 	}
@@ -104,7 +127,7 @@ public class Utilisateur
 	/**
 	 * @param isAdmin the isAdmin to set
 	 */
-	public void setIsAdmin(Boolean isAdmin)
+	public void setIsAdmin(boolean isAdmin)
 	{
 	    this.isAdmin = isAdmin;
 	}
@@ -170,7 +193,11 @@ public class Utilisateur
 	 */
 	public void setCp(String cp)
 	{
-	    this.cp = cp;
+		if(cp.length() == 0)
+			return;
+		
+		// verifier que c'est bien un code postal
+		this.cp = cp;
 	}
 
 	/**
@@ -205,7 +232,22 @@ public class Utilisateur
 	    this.prenom = prenom;
 	}
 
-	// Start of user code (user defined methods for Utilisateur)
+	public boolean isInBase()
+	{
+		return isInBase;
+	}
 
-	// End of user code
+	public void setInBase(boolean isInBase)
+	{
+		this.isInBase = isInBase;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "Utilisateur [id=" + id + ", isAdmin=" + isAdmin + ", pass="
+				+ pass + ", nom=" + nom + ", hash=" + hash + ", cp=" + cp
+				+ ", isInBase=" + isInBase + ", articles=" + articles
+				+ ", prenom=" + prenom + "]";
+	}
 }

@@ -1,8 +1,12 @@
+package Model;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
 
-public class ArticleHelper
+import Controller.OracleJDBC;
+import Controller.SupaLogga;
+
+public abstract class ArticleHelper
 {
 	public static HashSet<Article> getAll()
 	{
@@ -44,6 +48,28 @@ public class ArticleHelper
 			    return null;
 			}
 		}
+	}
+	
+	public static int getLastId()
+	{
+		String query = "SELECT AR_ID FROM Article WHERE ROWNUM <=1 ORDER BY AR_ID DESC";
+		ResultSet rs = OracleJDBC.query(query);
+		int id = -1;
+		
+		try
+		{
+			rs.next();
+			//Retrieve by column name
+			id	= rs.getInt("AR_ID");
+		}
+		catch(SQLException se)
+		{
+			SupaLogga.log("SQLException...");
+		    se.printStackTrace();
+		    return -1;
+		}
+		
+		return id;
 	}
 	
 	public static Article getFirst()

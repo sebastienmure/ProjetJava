@@ -27,10 +27,10 @@ AS
 			ar_ref    VARCHAR2 (250)  ,
 			ar_label  VARCHAR2 (250)  ,
 			ar_prix   FLOAT   ,
-			ar_image  CLOB   ,
+			ar_image  VARCHAR2 (250)  ,
 			CONSTRAINT Article_Pk PRIMARY KEY (ar_id)
 		);
-			CREATE TABLE Calendrier(
+		CREATE TABLE Calendrier(
 			ca_date  DATE  NOT NULL  ,
 			CONSTRAINT Date_Pk PRIMARY KEY (ca_date)
 		);
@@ -67,7 +67,7 @@ AS
 
 
 		/*	INSERTIONS	*/
-		# utilisateurs
+		-- utilisateurs
 		INSERT INTO Utilisateur (UT_ID, UT_NOM, UT_PRENOM, UT_CP, UT_PASS, UT_HASH, UT_ISADMIN) values
 			(NULL, 'Nom0', 'Prenom0', '69000', '123Soleil', 'lol', 1);
 
@@ -83,7 +83,7 @@ AS
 		INSERT INTO Utilisateur (UT_ID, UT_NOM, UT_PRENOM, UT_CP, UT_PASS, UT_HASH, UT_ISADMIN) values
 			(NULL, 'Nom4', 'Prenom4', '43700', '123Soleil', 'lol', 0);
 
-		# Articles
+		-- Articles
 		INSERT INTO Article (AR_ID, AR_REF, AR_LABEL, AR_PRIX, AR_IMAGE) values
 			(NULL, 'ref0', 'Label0', 20.5, '/img/img0.jpg');
 

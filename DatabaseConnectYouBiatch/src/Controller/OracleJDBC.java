@@ -1,3 +1,4 @@
+package Controller;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,6 +14,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+
+import Model.Article;
+import Model.ArticleHelper;
  
 public abstract class OracleJDBC
 {
@@ -96,7 +100,7 @@ public abstract class OracleJDBC
 			System.out.println("Creating statement...");
 			stmt = connection.createStatement();
 			
-			System.out.print("Querying...");
+			System.out.println("Querying...\n\t" + sqlQuery);
 			rs = stmt.executeQuery(sqlQuery);
 			// dtm = buildTableModel(rs);
 			returnValue = rs;
@@ -166,7 +170,7 @@ public abstract class OracleJDBC
 		System.out.println("Disconnected!");
 	}
 	
-	private static DefaultTableModel buildTableModel(ResultSet rs)
+	public static DefaultTableModel buildTableModel(ResultSet rs)
 	        throws SQLException
 	{
 	    ResultSetMetaData metaData = rs.getMetaData();
