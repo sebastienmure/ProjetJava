@@ -1,12 +1,2 @@
-janv. 24, 2015 6:28:20 PM controller.SupaLogga log
-INFO: clic sur "Valider"
-janv. 24, 2015 6:28:21 PM controller.SupaLogga log
-INFO: pass generated: 123lol-lol-1abc1e35-ee8a-4328-a553-8908b9af148d --> [B@1fe1477
-janv. 24, 2015 6:28:21 PM controller.SupaLogga log
-INFO: pass generated: 123lol-lol-1abc1e35-ee8a-4328-a553-8908b9af148d --> [B@1fe1477
-janv. 24, 2015 6:28:21 PM controller.SupaLogga log
-INFO: Utilisateur [id=6, isAdmin=false, pass=[B@1fe1477, nom=Adams, hash=1abc1e35-ee8a-4328-a553-8908b9af148d, cp=63000, isInBase=false, articles=[], prenom=Djay]
-janv. 24, 2015 6:28:21 PM controller.SupaLogga log
-INFO: Utilisateur [id=6, isAdmin=false, pass=[B@1fe1477, nom=Adams, hash=1abc1e35-ee8a-4328-a553-8908b9af148d, cp=63000, isInBase=false, articles=[], prenom=Djay]
-janv. 24, 2015 6:28:21 PM controller.SupaLogga log
-INFO: Utilisateur [id=6, isAdmin=false, pass=[B@1fe1477, nom=Adams, hash=1abc1e35-ee8a-4328-a553-8908b9af148d, cp=63000, isInBase=false, articles=[], prenom=Djay]
+janv. 27, 2015 10:19:33 PM controller.SupaLogga log
+INFO: validé
