@@ -1,3 +1,4 @@
+package model;
 import java.util.HashSet;
 
 /*******************************************************************************
@@ -23,11 +24,7 @@ public class Utilisateur
 	/**
 	 * Description of the property isAdmin.
 	 */
-<<<<<<< .merge_file_a17468
-	private Boolean isAdmin;
-=======
 	private boolean isAdmin;
->>>>>>> .merge_file_a09412
 
 	/**
 	 * Description of the property pass.
@@ -50,6 +47,11 @@ public class Utilisateur
 	private String cp;
 
 	/**
+	 * @brief Not a Column of the Utilisateur table
+	 */
+	private boolean isInBase;
+	
+	/**
 	 * Description of the property articles.
 	 */
 	public HashSet<Article> articles = new HashSet<Article>();
@@ -58,10 +60,6 @@ public class Utilisateur
 	 * Description of the property prenom.
 	 */
 	private String prenom;
-
-	// Start of user code (user defined attributes for Utilisateur)
-
-	// End of user code
 
 	/**
 	 * The constructor.
@@ -80,6 +78,23 @@ public class Utilisateur
 		hash = "";
 		isAdmin = false;
 	}
+
+	public Utilisateur(int id, String nom, String prenom, String cp, String pass, String hash, boolean isAdmin, boolean isInBase)
+	{
+		// Start of user code constructor for Utilisateur)
+		super();
+		// End of user code
+		
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.cp = cp;
+		this.pass = pass;
+		this.hash = hash;
+		this.isAdmin = false;
+		this.isInBase = isInBase;
+	}
+
 
 	/**
 	 * @return the id
@@ -100,11 +115,7 @@ public class Utilisateur
 	/**
 	 * @return the isAdmin
 	 */
-<<<<<<< .merge_file_a17468
-	public Boolean getIsAdmin()
-=======
 	public boolean getIsAdmin()
->>>>>>> .merge_file_a09412
 	{
 	    return isAdmin;
 	}
@@ -112,11 +123,7 @@ public class Utilisateur
 	/**
 	 * @param isAdmin the isAdmin to set
 	 */
-<<<<<<< .merge_file_a17468
-	public void setIsAdmin(Boolean isAdmin)
-=======
 	public void setIsAdmin(boolean isAdmin)
->>>>>>> .merge_file_a09412
 	{
 	    this.isAdmin = isAdmin;
 	}
@@ -182,7 +189,11 @@ public class Utilisateur
 	 */
 	public void setCp(String cp)
 	{
-	    this.cp = cp;
+		if(cp.length() == 0)
+			return;
+		
+		// verifier que c'est bien un code postal
+		this.cp = cp;
 	}
 
 	/**
@@ -217,7 +228,22 @@ public class Utilisateur
 	    this.prenom = prenom;
 	}
 
-	// Start of user code (user defined methods for Utilisateur)
+	public boolean isInBase()
+	{
+		return isInBase;
+	}
 
-	// End of user code
+	public void setInBase(boolean isInBase)
+	{
+		this.isInBase = isInBase;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "Utilisateur [id=" + id + ", isAdmin=" + isAdmin + ", pass="
+				+ pass + ", nom=" + nom + ", hash=" + hash + ", cp=" + cp
+				+ ", isInBase=" + isInBase + ", articles=" + articles
+				+ ", prenom=" + prenom + "]";
+	}
 }

@@ -4,16 +4,16 @@ import java.sql.*;
 public class SqliteConnect
 {
 	// JDBC driver name and database URL
-	static final String JDBC_DRIVER = "org.sqlite.JDBC";	// oracle.jdbc.driver.OracleDriver
-	static final String DB_URL = "jdbc:sqlite:test.db"; 	// jdbc:oracle:thin:@hostname:portNumber:databaseName
+	static final String JDBC_DRIVER = "oracle.jdbc.driver.OracleDriver";	// org.sqlite.JDBC
+	static final String DB_URL = "jdbc:oracle:thin:@192.168.83.128:1521:JoseSID"; 	// jdbc:sqlite:test.db 
 	
 	//	Database credentials
-	static final String USER = "username";
-	static final String PASS = "password";
+	static final String USER = "SYSTEM";  // username
+	static final String PASS = "system123lol"; // password
 	
 	public static void main(String[] args)
 	{
-	    	Connection conn = null;
+    	Connection conn = null;
 		Statement stmt = null;
 		try
 		{
@@ -28,6 +28,9 @@ public class SqliteConnect
 			System.out.println("Creating statement...");
 			stmt = conn.createStatement();
 			String sql;
+			
+			
+			/*
 			sql = "SELECT * FROM COMPANY";
 			ResultSet rs = stmt.executeQuery(sql);
 
@@ -47,6 +50,25 @@ public class SqliteConnect
 				System.out.print(", Age: " + age);
 				System.out.println(", Address: " + address);
 				System.out.println(", Salary: " + salary);
+			}
+			*/
+			
+			
+			sql = "SELECT * FROM Article";
+			ResultSet rs = stmt.executeQuery(sql);
+
+			//STEP 5: Extract data from result set
+			while(rs.next())
+			{
+				//Retrieve by column name
+				int id	= rs.getInt("AR_ID");
+				String label = rs.getString("AR_LABEL");
+				float prix = rs.getFloat("AR_PRIX");
+
+				//Display values
+				System.out.print("ID: " + id);
+				System.out.print(", Label: " + label);
+				System.out.print(", Prix: " + prix);
 			}
 			//STEP 6: Clean-up environment
 			rs.close();
@@ -91,5 +113,9 @@ public class SqliteConnect
 		}//end try
 
 		System.out.println("Goodbye!");
+<<<<<<< .merge_file_a13936
+=======
+		
+>>>>>>> .merge_file_a13984
 	}//end main 
 }//end FirstExample
