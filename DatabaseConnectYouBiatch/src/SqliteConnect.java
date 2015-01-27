@@ -91,6 +91,5 @@ public class SqliteConnect
 		}//end try
 
 		System.out.println("Goodbye!");
-		*/
 	}//end main 
 }//end FirstExample

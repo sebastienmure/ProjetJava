@@ -1,0 +1,12 @@
+Nom global de la bdd : Jose
+
+SID : JoseSID
+
+ORACLE_BASE : C:\oracle
+
+ORACLE_HOME : C:\oracle\ora92
+
+DB_NAME : Jose
+
+SID : JoseSID:
+script de création : C:\oracle\admin\Jose\scripts
