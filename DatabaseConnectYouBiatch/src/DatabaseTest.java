@@ -77,7 +77,7 @@ public class DatabaseTest extends JFrame {
 //
 
 class QueryTableModel extends AbstractTableModel {
-  Vector cache; // will hold String[] objects . . .
+  Vector<String[]> cache; // will hold String[] objects . . .
 
   int colCount;
 
@@ -90,7 +90,7 @@ class QueryTableModel extends AbstractTableModel {
   String currentURL;
 
   public QueryTableModel() {
-    cache = new Vector();
+    cache = new Vector<String[]>();
     //new gsl.sql.driv.Driver();
   }
 
@@ -107,7 +107,7 @@ class QueryTableModel extends AbstractTableModel {
   }
 
   public Object getValueAt(int row, int col) {
-    return ((String[]) cache.elementAt(row))[col];
+    return cache.elementAt(row)[col];
   }
 
   public void setHostURL(String url) {
@@ -124,7 +124,7 @@ class QueryTableModel extends AbstractTableModel {
   // All the real work happens here; in a real application,
   // we'd probably perform the query in a separate thread.
   public void setQuery(String q) {
-    cache = new Vector();
+    cache = new Vector<String[]>();
     try {
       // Execute the query and store the result set and its metadata
       ResultSet rs = statement.executeQuery(q);
@@ -151,7 +151,7 @@ class QueryTableModel extends AbstractTableModel {
       }
       fireTableChanged(null); // notify everyone that we have a new table.
     } catch (Exception e) {
-      cache = new Vector(); // blank it out and keep going.
+      cache = new Vector<String[]>(); // blank it out and keep going.
       e.printStackTrace();
     }
   }
