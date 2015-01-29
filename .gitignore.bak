@@ -1,0 +1,9 @@
+*.class
+*.lck
+*.log*
+<<<<<<< HEAD
+.metadata/.plugins/*
+.recommenders/*
+=======
+.DS_Store
+>>>>>>> 850d4af41713d9585b8476df612ab0afee891b09

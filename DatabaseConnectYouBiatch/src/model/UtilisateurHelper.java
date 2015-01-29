@@ -163,6 +163,56 @@ public abstract class UtilisateurHelper
 		}
 	}
 	
+	public static Utilisateur getOneByUsername(String username)
+	{
+		if(username.length() == 0)
+			return null;
+		
+		String[] uname = username.split("-");
+		if(uname.length != 2)
+		{
+			SupaLogga.log("Le nom d''utilisateur doit être est nom.prenom");
+			return null;
+		}
+		
+		String nom = uname[0];
+		String prenom = uname[1];
+		String pass = "";
+		String hash = "";
+		int id	= -1;
+		String cp = "";
+		boolean isAdmin = false;
+		
+		String query = "select * from Utilisateur a where a.UT_NOM = '" + nom + "' and a.UT_PRENOM = '" + prenom + "'";
+		ResultSet rs = OracleJDBC.query(query);
+		
+		if(rs == null)
+			return null;
+		else
+		{
+			try
+			{
+				rs.next();
+				//Retrieve by column name
+				id	= rs.getInt("UT_ID");
+				nom = rs.getString("UT_NOM");
+				prenom = rs.getString("UT_PRENOM");
+				pass = rs.getString("UT_PASS");
+				cp = rs.getString("UT_CP");
+				hash = rs.getString("UT_HASH");
+				isAdmin = rs.getBoolean("UT_ISADMIN");
+				
+				return new Utilisateur(id, nom, prenom, cp, pass, hash, isAdmin, true);
+			}
+			catch(SQLException se)
+			{
+				System.out.print("SQLException...");
+			    se.printStackTrace();
+			    return null;
+			}
+		}
+	}
+	
 	// Attention avec la gestion des MdP
 	// Des Risques lors de l'update
 	public static void commitChange(Utilisateur a)
