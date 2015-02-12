@@ -1,5 +1,6 @@
 package model;
 import java.util.HashSet;
+import java.util.Vector;
 
 /*******************************************************************************
  * 2014, All rights reserved.
@@ -94,7 +95,6 @@ public class Utilisateur
 		this.isAdmin = false;
 		this.isInBase = isInBase;
 	}
-
 
 	/**
 	 * @return the id
@@ -245,5 +245,16 @@ public class Utilisateur
 				+ pass + ", nom=" + nom + ", hash=" + hash + ", cp=" + cp
 				+ ", isInBase=" + isInBase + ", articles=" + articles
 				+ ", prenom=" + prenom + "]";
+	}
+	
+	public Vector<String> toVector()
+	{
+		Vector<String> v = new Vector<>();
+		
+		v.add(nom);
+		v.add(prenom);
+		v.add(cp);
+		
+		return v;
 	}
 }

@@ -4,19 +4,22 @@ import java.security.MessageDigest;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Base64;
-import java.util.HashSet;
+import java.util.Vector;
 
 import controller.OracleJDBC;
 import controller.SupaLogga;
 import controller.AESencrp;
 
 import java.util.UUID;
+import java.util.concurrent.ArrayBlockingQueue;
+
+import javax.swing.table.DefaultTableModel;
 
 public abstract class UtilisateurHelper
 {
-	public static HashSet<Utilisateur> getAll()
+	public static Vector<Utilisateur> getAll()
 	{
-		//SupaLogga.log("public static HashSet<Utilisateur> getAll()");
+		//SupaLogga.log("public static Vector<Utilisateur> getAll()");
 		String nom = "";
 		String prenom = "";
 		String pass = "";
@@ -27,7 +30,7 @@ public abstract class UtilisateurHelper
 		
 		String query = "select * from Utilisateur";
 		ResultSet rs = OracleJDBC.query(query);
-		HashSet<Utilisateur> la = new HashSet<Utilisateur>();
+		Vector<Utilisateur> la = new Vector<Utilisateur>();
 		
 		if(rs == null)
 		{
@@ -59,6 +62,16 @@ public abstract class UtilisateurHelper
 			    return null;
 			}
 		}
+	}
+	
+	public static UtilisateurTableModel toTableModel(Vector<Utilisateur> v)
+	{
+		final int col = v.size();
+		int cpt = 0;
+		String[][] datas = null;
+		UtilisateurTableModel dt = new UtilisateurTableModel(v);     	
+    	
+    	return dt;
 	}
 	
 	public static int getLastId()

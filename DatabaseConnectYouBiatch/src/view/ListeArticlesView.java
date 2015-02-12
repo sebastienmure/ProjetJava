@@ -3,17 +3,22 @@ package view;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Vector;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import model.Article;
+import model.ArticleHelper;
+import model.Utilisateur;
+import model.UtilisateurHelper;
 import controller.OracleJDBC;
 
  
 // CTRL + SHIFT + O pour generer les imports
-public class Fenetre extends JFrame
+public class ListeArticlesView extends JFrame
 {
     /**
      * 
@@ -23,7 +28,7 @@ public class Fenetre extends JFrame
     JTable tableau = null;
     //Object[][] data;
     
-    public Fenetre(DefaultTableModel dt)
+    public ListeArticlesView(DefaultTableModel dt)
     {
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,6 +70,7 @@ public class Fenetre extends JFrame
     	DefaultTableModel dt = null;
 		//System.out.print("Querying articles...");
 		//rs = stmt.executeQuery(sqlQuery);
+    	/*
     	try
     	{
     		dt = OracleJDBC.buildTableModel(rs);
@@ -78,8 +84,12 @@ public class Fenetre extends JFrame
     	{
     		OracleJDBC.disconnect();
     	}
+    	*/
     	
-        Fenetre fen = new Fenetre(dt);
+    	Vector<Article> v = ArticleHelper.getAll();
+    	dt = ArticleHelper.toTableModel(v);
+    	
+        ListeArticlesView fen = new ListeArticlesView(dt);
         //fen.loadTableModel(dt);
         fen.setVisible(true);
     }     

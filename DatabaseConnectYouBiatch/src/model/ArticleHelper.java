@@ -1,16 +1,17 @@
 package model;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashSet;
+import java.util.Vector;
+import java.util.Vector;
 
 import controller.OracleJDBC;
 import controller.SupaLogga;
 
 public abstract class ArticleHelper
 {
-	public static HashSet<Article> getAll()
+	public static Vector<Article> getAll()
 	{
-		//SupaLogga.log("public static HashSet<Article> getAll()");
+		//SupaLogga.log("public static Vector<Article> getAll()");
 		String label = "";
 		String ref = "";
 		String image = "";
@@ -18,7 +19,7 @@ public abstract class ArticleHelper
 		float prix = 0;
 		String query = "select * from Article";
 		ResultSet rs = OracleJDBC.query(query);
-		HashSet<Article> la = new HashSet<Article>();
+		Vector<Article> la = new Vector<Article>();
 		
 		if(rs == null)
 		{
@@ -48,6 +49,16 @@ public abstract class ArticleHelper
 			    return null;
 			}
 		}
+	}
+	
+	public static ArticleTableModel toTableModel(Vector<Article> v)
+	{
+		final int col = v.size();
+		int cpt = 0;
+		String[][] datas = null;
+		ArticleTableModel dt = new ArticleTableModel(v);     	
+    	
+    	return dt;
 	}
 	
 	public static int getLastId()

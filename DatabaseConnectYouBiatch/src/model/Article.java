@@ -1,5 +1,6 @@
 package model;
 import java.util.HashSet;
+import java.util.Vector;
 
 /*******************************************************************************
  * 2014, All rights reserved.
@@ -197,6 +198,17 @@ public class Article
 				+ utilisateurs + "]";
 	}
 
+	public Vector<String> toVector()
+	{
+		Vector<String> v = new Vector<>();
+		
+		v.add(label);
+		v.add(ref);
+		v.add(String.valueOf(prix));
+		
+		return v;
+	}
+	
 	public boolean isInBase() {
 		return isInBase;
 	}
