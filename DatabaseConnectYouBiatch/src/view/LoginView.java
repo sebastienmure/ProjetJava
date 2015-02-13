@@ -23,6 +23,7 @@ import javax.swing.JButton;
 import model.Utilisateur;
 import model.UtilisateurHelper;
 import controller.AESencrp;
+import controller.Controlla;
 import controller.SupaLogga;
 
 import java.awt.event.MouseAdapter;
@@ -38,6 +39,12 @@ public class LoginView extends JFrame
 	public LoginView()
 	{
 		super();
+		initUI();
+		Controlla.get_instance().set_currentContaina(this);
+	}
+
+	private void initUI()
+	{
 		this.setSize(316, 227);
 		
 		BorderLayout borderLayout = (BorderLayout) getContentPane().getLayout();
@@ -112,7 +119,7 @@ public class LoginView extends JFrame
 			public void mouseClicked(MouseEvent arg0)
 			{
 				if(tfMotDePasse.getText().length() == 0 || tfNomDutilisateur.getText().length() == 0)
-					LoginView.this.showMessageDialog("Veuillez renseigner les champs",
+					JOptionPane.showMessageDialog(LoginView.this, "Veuillez renseigner les champs",
 							"Inane warning",
 						    JOptionPane.WARNING_MESSAGE);
 				else
@@ -136,47 +143,12 @@ public class LoginView extends JFrame
 		
 		this.setVisible(true);
 	}
-	
-	private void showMessageDialog(String msg, String type, int optionMessage)
-	{
-		JOptionPane.showMessageDialog(this,
-				msg,
-				type,
-			    optionMessage);
-	}
-	
+		
 	private void login()
 	{
-		Utilisateur user = UtilisateurHelper.getOneByUsername(tfNomDutilisateur.getText());
-		if(user == null)
-			showMessageDialog("L'utilisateur " + tfNomDutilisateur.getText() + " n'existe pas...",
-					"Inane error",
-				    JOptionPane.ERROR_MESSAGE);
-		else
-		{
-			try
-			{
-				String userCrystalPass = AESencrp.decrypt(user.getPass()).split("-")[0];
-				SupaLogga.log( "real: " + userCrystalPass + "\n\tEntered: " + tfMotDePasse.getText());
-				
-				if(!tfMotDePasse.getText().equals(userCrystalPass))
-					showMessageDialog("Mot de passe errone.",
-						    "A plain message",
-						    JOptionPane.PLAIN_MESSAGE);
-				else
-					showMessageDialog("Bienvenu " + user.getPrenom() + "! Vous êtes maintenant connecté.",
-						    "A plain message",
-						    JOptionPane.PLAIN_MESSAGE);
-			}
-			catch (Exception e)
-			{
-				// TODO Auto-generated catch block
-				SupaLogga.log("Erreur encrypt");
-				e.printStackTrace();
-			}
-		}
+		Controlla.get_instance().login(tfNomDutilisateur.getText(), tfMotDePasse.getText());
 	}
-
+	
 	public static void main(String[] args)
 	{
 		// TODO Auto-generated method stub

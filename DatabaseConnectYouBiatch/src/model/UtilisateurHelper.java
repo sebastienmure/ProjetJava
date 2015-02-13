@@ -184,7 +184,7 @@ public abstract class UtilisateurHelper
 		String[] uname = username.split("-");
 		if(uname.length != 2)
 		{
-			SupaLogga.log("Le nom d''utilisateur doit être est nom.prenom");
+			SupaLogga.log("Le nom d''utilisateur doit être est nom-prenom");
 			return null;
 		}
 		

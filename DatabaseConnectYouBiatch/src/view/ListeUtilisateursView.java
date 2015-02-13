@@ -64,32 +64,10 @@ public class ListeUtilisateursView extends JFrame
 
     public static void main(String[] args)
     {
-    	//ResultSet rs = OracleJDBC.query("SELECT * FROM Utilisateur");
-    	DefaultTableModel dt = null;
-		//System.out.print("Querying articles...");
-		//rs = stmt.executeQuery(sqlQuery);
-    	
-    	/*
-    	try
-    	{
-    		dt = OracleJDBC.buildTableModel(rs);
-    	}
-    	catch (SQLException sqle)
-    	{
-    		System.out.println("SQL exception");
-    		sqle.printStackTrace();
-    	}
-    	finally
-    	{
-    		OracleJDBC.disconnect();
-    	}
-    	*/
-    	
     	Vector<Utilisateur> v = UtilisateurHelper.getAll();
-    	dt = UtilisateurHelper.toTableModel(v);
+    	DefaultTableModel dt = UtilisateurHelper.toTableModel(v);
     	
         ListeUtilisateursView fen = new ListeUtilisateursView(dt);
-        //fen.loadTableModel(dt);
         fen.setVisible(true);
-    }     
+    }
 }

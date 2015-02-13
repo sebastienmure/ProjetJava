@@ -1,0 +1,12 @@
+TAF ACSI:
+	LIRE ET COMPRENDRE LE CODE
+	Faire diagramme de classes (UML)
+	Faire quelques diagrammes de séquence (UML)
+	Réorganiser le code au mieux (respecter le diag de classes toussa)
+	Afficher les bonnes options en fonction de l'user qui se connecte (admin ou normal)
+	Faire le Vue Détail d'un prod
+	Faire le Vue Détail d'un user
+	Consulter un prod en tant qu'user
+	Faire les stats des consult produits (ouai parce que c'est pas fait)
+	Faire le design (ouai parce que là c'est dégueu)
+	Faire un rapport (sûrement)
