@@ -10,3 +10,4 @@ TAF ACSI:
 	Faire les stats des consult produits (ouai parce que c'est pas fait)
 	Faire le design (ouai parce que là c'est dégueu)
 	Faire un rapport (sûrement)
+	Faire des stats sur les vues articles avec : http://www.jfree.org/jfreechart/samples.html
