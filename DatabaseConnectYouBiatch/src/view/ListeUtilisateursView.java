@@ -1,6 +1,7 @@
 package view;
 
 
+import java.awt.event.WindowEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
@@ -47,6 +48,23 @@ public class ListeUtilisateursView extends JFrame
         // Les titres des colonnes
         //String    title[] = {"Pseudo", "Age", "Taille"};
         tableau = new JTable(dt);
+        tableau.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                int row = tableau.rowAtPoint(evt.getPoint());
+                int col = tableau.columnAtPoint(evt.getPoint());
+                if (row >= 0 && col >= 0) {
+                	java.awt.Window win[] = java.awt.Window.getWindows(); 
+                	for(int i=0;i<win.length;i++){ 
+                	    win[i].dispose(); 
+                	    win[i]=null;
+                	} 
+            		UtilisateurView fen = new UtilisateurView(row);
+                	fen.setVisible(true);
+                	fen.setLocationRelativeTo( null );
+                }
+            }
+        });
         
         // Nous ajoutons notre tableau à notre contentPane dans un scroll
         // Sinon les titres des colonnes ne s'afficheront pas !
@@ -69,5 +87,6 @@ public class ListeUtilisateursView extends JFrame
     	
         ListeUtilisateursView fen = new ListeUtilisateursView(dt);
         fen.setVisible(true);
+        fen.setLocationRelativeTo( null );
     }
 }

@@ -22,7 +22,7 @@ public abstract class OracleJDBC
 {
 	// JDBC driver name and database URL
 	static final String JDBC_DRIVER = "oracle.jdbc.driver.OracleDriver";
-	static final String DB_URL = "jdbc:oracle:thin:@192.168.83.128:1521:JoseSID"; 
+	static final String DB_URL = "jdbc:oracle:thin:@192.168.84.59:1521:JoseSID"; 
 	
 	//	Database credentials
 	static final String USER = "SYS as SYSDBA";  // username

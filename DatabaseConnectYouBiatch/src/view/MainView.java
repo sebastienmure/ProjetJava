@@ -69,6 +69,7 @@ public class MainView extends JFrame
 		        ListeUtilisateursView fen = new ListeUtilisateursView(dt);
 		        //fen.loadTableModel(dt);
 		        fen.setVisible(true);
+		        fen.setLocationRelativeTo( null );
 			}
 		});
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
@@ -117,6 +118,7 @@ public class MainView extends JFrame
 	{
 		// TODO Auto-generated method stub
 		MainView mv = new MainView();
+		mv.setLocationRelativeTo( null );
 	}
 
 }
