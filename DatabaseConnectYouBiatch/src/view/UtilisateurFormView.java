@@ -188,10 +188,8 @@ public class UtilisateurFormView extends JDialog implements ActionListener
 			JOptionPane.showMessageDialog(this, "Erreur avec l'ID...");
 			return;
 		}
-
-		
 		Utilisateur u = new Utilisateur(id, nom, prenom, cp, pass, "", isAdmin, false);
-		UtilisateurHelper.commitChange(u);
+		UtilisateurHelper.commitChange(u, isAdmin);
 		SupaLogga.log(u.toString());
 	}
 

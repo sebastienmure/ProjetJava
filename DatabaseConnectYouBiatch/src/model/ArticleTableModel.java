@@ -6,7 +6,6 @@ import java.util.Vector;
 
 import javax.swing.table.DefaultTableModel;
 
-import sun.security.util.Length;
 
 public class ArticleTableModel extends DefaultTableModel
 {

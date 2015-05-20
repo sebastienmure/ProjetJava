@@ -228,14 +228,14 @@ public abstract class UtilisateurHelper
 	
 	// Attention avec la gestion des MdP
 	// Des Risques lors de l'update
-	public static void commitChange(Utilisateur a)
+	public static void commitChange(Utilisateur a, Boolean isAdmin)
 	{
 		short admin = 0;
 		String msg = "";
 		if(a == null)
 			return; // Mettre un message d'erreur
 		
-		if(a.getIsAdmin())
+		if(isAdmin == true)
 			admin = 1;
 		
 		ResultSet res = null;

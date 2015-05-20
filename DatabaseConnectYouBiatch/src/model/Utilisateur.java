@@ -249,7 +249,7 @@ public class Utilisateur
 	
 	public Vector<String> toVector()
 	{
-		Vector<String> v = new Vector<>();
+		Vector<String> v = new Vector<String>();
 		
 		v.add(nom);
 		v.add(prenom);

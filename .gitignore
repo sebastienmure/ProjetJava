@@ -4,3 +4,4 @@
 .metadata/.plugins/*
 .recommenders/*
 .DS_Store
+/bin/

@@ -200,7 +200,7 @@ public class Article
 
 	public Vector<String> toVector()
 	{
-		Vector<String> v = new Vector<>();
+		Vector<String> v = new Vector<String>();
 		
 		v.add(label);
 		v.add(ref);
