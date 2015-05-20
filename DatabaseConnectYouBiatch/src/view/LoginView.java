@@ -4,6 +4,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -97,7 +98,7 @@ public class LoginView extends JFrame
 		pCenter.add(lblMotDePasse, gbc_lblMotDePasse);
 		lblMotDePasse.setLabelFor(tfMotDePasse);
 		
-		tfMotDePasse = new JTextField();
+		tfMotDePasse = new JPasswordField();
 		GridBagConstraints gbc_tfMotDePasse = new GridBagConstraints();
 		gbc_tfMotDePasse.fill = GridBagConstraints.HORIZONTAL;
 		gbc_tfMotDePasse.gridx = 1;
@@ -118,7 +119,7 @@ public class LoginView extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent arg0)
 			{
-				if(tfMotDePasse.getText().length() == 0 || tfNomDutilisateur.getText().length() == 0)
+				if(((JPasswordField) tfMotDePasse).getPassword().length == 0 || tfNomDutilisateur.getText().length() == 0)
 					JOptionPane.showMessageDialog(LoginView.this, "Veuillez renseigner les champs",
 							"Inane warning",
 						    JOptionPane.WARNING_MESSAGE);
