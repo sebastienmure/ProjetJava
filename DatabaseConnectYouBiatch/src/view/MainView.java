@@ -52,6 +52,7 @@ public class MainView extends JFrame
 		        ListeArticlesView fen = new ListeArticlesView(dt);
 
 		        fen.setVisible(true);
+		        fen.setLocationRelativeTo( null );
 			}
 		});
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
@@ -89,6 +90,7 @@ public class MainView extends JFrame
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ArticleFormView n = new ArticleFormView();
+				n.setLocationRelativeTo( null );
 			}
 		});
 		GridBagConstraints gbc_btnNewButton_3 = new GridBagConstraints();
@@ -102,6 +104,7 @@ public class MainView extends JFrame
 		btnAjouterUnUtilisateur.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				UtilisateurFormView n = new UtilisateurFormView();
+				n.setLocationRelativeTo( null );
 			}
 		});
 		GridBagConstraints gbc_btnAjouterUnUtilisateur = new GridBagConstraints();

@@ -20,6 +20,7 @@ import java.awt.Insets;
 
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
+import javax.swing.table.DefaultTableModel;
 
 import model.Article;
 import model.ArticleHelper;
@@ -30,6 +31,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
+import java.util.Vector;
 
 public class ArticleView extends JDialog implements ActionListener
 {
@@ -113,6 +115,13 @@ public class ArticleView extends JDialog implements ActionListener
 			{
 				case "Fermer":
 					SupaLogga.log("clic sur \"Annuler\"");
+					Vector<Article> v = ArticleHelper.getAll();
+			    	DefaultTableModel dt = ArticleHelper.toTableModel(v);
+			    	
+			        ListeArticlesView fen = new ListeArticlesView(dt);
+
+			        fen.setVisible(true);
+			        fen.setLocationRelativeTo( null );
 					this.dispose(); // ferme la fenetre
 					break;
 				default:

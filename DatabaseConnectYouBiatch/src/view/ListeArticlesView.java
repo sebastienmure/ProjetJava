@@ -33,9 +33,22 @@ public class ListeArticlesView extends JFrame
     public ListeArticlesView(DefaultTableModel dt)
     {
         this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("JTable");
         this.setSize(800, 450);
+        
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+        	public void windowClosing(java.awt.event.WindowEvent evt) {
+        		java.awt.Window win[] = java.awt.Window.getWindows(); 
+            	for(int i=0;i<win.length;i++){ 
+            	    win[i].dispose(); 
+            	    win[i]=null;
+            	} 
+        		MainView mv = new MainView();
+        		mv.setLocationRelativeTo( null );
+        		mv.setVisible(true);
+    		} 
+		});
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
         //Les données du tableau
         /*
@@ -57,8 +70,14 @@ public class ListeArticlesView extends JFrame
                 int row = tableau.rowAtPoint(evt.getPoint());
                 int col = tableau.columnAtPoint(evt.getPoint());
                 if (row >= 0 && col >= 0) {
-            		ArticleView fen = new ArticleView(row);
+                	java.awt.Window win[] = java.awt.Window.getWindows(); 
+                	for(int i=0;i<win.length;i++){ 
+                	    win[i].dispose(); 
+                	    win[i]=null;
+                	} 
+                	ArticleView fen = new ArticleView(row);
                 	fen.setVisible(true);
+                	fen.setLocationRelativeTo( null );
                 }
             }
         });
@@ -86,5 +105,6 @@ public class ListeArticlesView extends JFrame
         ListeArticlesView fen = new ListeArticlesView(dt);
 
         fen.setVisible(true);
+        fen.setLocationRelativeTo( null );
     }
 }

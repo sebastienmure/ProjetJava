@@ -1,6 +1,7 @@
 package view;
 
 
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,9 +31,22 @@ public class ListeUtilisateursView extends JFrame
     public ListeUtilisateursView(DefaultTableModel dt)
     {
         this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("JTable");
         this.setSize(800, 450);
+        
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+        	public void windowClosing(java.awt.event.WindowEvent evt) {
+        		java.awt.Window win[] = java.awt.Window.getWindows(); 
+            	for(int i=0;i<win.length;i++){ 
+            	    win[i].dispose(); 
+            	    win[i]=null;
+            	} 
+        		MainView mv = new MainView();
+        		mv.setLocationRelativeTo( null );
+        		mv.setVisible(true);
+    		} 
+		});
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
         //Les données du tableau
         /*
@@ -88,5 +102,6 @@ public class ListeUtilisateursView extends JFrame
         ListeUtilisateursView fen = new ListeUtilisateursView(dt);
         fen.setVisible(true);
         fen.setLocationRelativeTo( null );
+        
     }
 }
